@@ -23,6 +23,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.multidex.MultiDexApplication;
 
+import com.contentsquare.android.ContentSquare;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,6 +44,7 @@ public class SkyTubeApp extends MultiDexApplication {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+        ContentSquare.startWithProjectId(getApplicationContext(), "skytubeapp");
 		skyTubeApp = this;
 	}
 
