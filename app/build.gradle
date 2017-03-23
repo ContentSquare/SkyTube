@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "free.rm.skytube"
-        minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 5
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.compileSdkVersion
+        versionCode rootProject.buildNum
+        versionName rootProject.versionName
         buildConfigField 'String', 'YOUTUBE_API_KEY', '"AIzaSyDAOcAgAAd098p_FLIePaQNKPTpcyhUGBA"';
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true    // this is as we have over 65536 lines of code...
@@ -40,6 +41,10 @@ configurations {
 }
 
 dependencies {
+
+    debugCompile project(path: ':library', configuration: "debug")
+    releaseCompile project(path: ':library', configuration: "release")
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
@@ -57,7 +62,7 @@ dependencies {
     compile group: 'joda-time', name: 'joda-time', version: '2.3'
     compile 'com.afollestad.material-dialogs:core:0.9.0.2'
 
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibVersion
+    compile 'com.android.support:design:' + rootProject.ext.supportLibVersion
     compile 'com.android.support:multidex:1.0.1'    // this is as we have over 65536 lines of code...
 }
