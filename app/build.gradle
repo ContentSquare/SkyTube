@@ -20,17 +20,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file("${rootDir}/config/keystore/shared-keystore.jks")
+            storePassword "Weballwin"
+            keyAlias "Jenkins"
+            keyPassword "Weballwin"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
     productFlavors {
         // 100% Open-Source Edition
         oss {
             applicationId "free.rm.skytube.oss"
-            versionName "2.3"          // the digits of the *fractional part* shall not be larger than "9"
+            versionName "2.3"
+            // the digits of the *fractional part* shall not be larger than "9"
             resValue "string", "app_name", "SkyTube"
         }
         // 99% Open-source edition:  uses the YouTube Player Jar [i.e. proprietary module - optional usage]
         extra {
             applicationId "free.rm.skytube.extra"
-            versionName "2.3 Extra"    // the digits of the *fractional part* shall not be larger than "9"
+            versionName "2.3 Extra"
+            // the digits of the *fractional part* shall not be larger than "9"
             resValue "string", "app_name", "SkyTube Extra"
         }
     }
@@ -64,5 +81,6 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibVersion
     compile 'com.android.support:design:' + rootProject.ext.supportLibVersion
-    compile 'com.android.support:multidex:1.0.1'    // this is as we have over 65536 lines of code...
+    compile 'com.android.support:multidex:1.0.1'
+    // this is as we have over 65536 lines of code...
 }
