@@ -25,6 +25,8 @@ import android.support.multidex.MultiDexApplication;
 
 import com.contentsquare.android.ContentSquare;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,6 +46,7 @@ public class SkyTubeApp extends MultiDexApplication {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Fabric.with(this, new Crashlytics());
         ContentSquare.startWithProjectId(getApplicationContext(), "skytubeapp");
 		skyTubeApp = this;
 	}
