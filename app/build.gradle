@@ -71,7 +71,7 @@ android {
 configurations {
     nonFreeCompile
 }
-
+android.defaultConfig.project.archivesBaseName = "skytube"
 dependencies {
 
     debugCompile project(path: ':library', configuration: "debug")
