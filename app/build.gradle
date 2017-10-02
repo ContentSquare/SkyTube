@@ -18,7 +18,9 @@ repositories {
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
-
+    lintOptions {
+        abortOnError false
+    }
     defaultConfig {
         applicationId "free.rm.skytube"
         minSdkVersion rootProject.minSdkVersion
@@ -83,8 +85,12 @@ dependencies {
     nonFreeCompile files('libs/YouTubeAndroidPlayerApi.jar')
 
     compile "org.ocpsoft.prettytime:prettytime:${prettyTimeVersion}"
-    compile "com.google.http-client:google-http-client-android:${googleHttpClientVersion}"
-    compile "com.google.apis:google-api-services-youtube:${googleApiYoutubeServicesVersion}"
+    compile("com.google.http-client:google-http-client-android:${googleHttpClientVersion}") {
+        exclude group: "org.apache.httpcomponents", module: "httpclient"
+    }
+    compile("com.google.apis:google-api-services-youtube:${googleApiYoutubeServicesVersion}") {
+        exclude group: "org.apache.httpcomponents", module: "httpclient"
+    }
 
     compile "org.jsoup:jsoup:${jsoupVersion}"
     compile "org.mozilla:rhino:${mozillaRhinoVersion}"
