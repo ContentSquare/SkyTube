@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import free.rm.skytube.R;
@@ -48,21 +48,21 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 	private Context context = null;
 	private MainActivityListener listener;
 
-	@Bind(R.id.channel_layout)
+	@BindView(R.id.channel_layout)
 	View channelLayout;
-	@Bind(R.id.title_text_view)
+	@BindView(R.id.title_text_view)
 	TextView titleTextView;
-	@Bind(R.id.channel_text_view)
+	@BindView(R.id.channel_text_view)
 	TextView channelTextView;
-	@Bind(R.id.thumbs_up_text_view)
+	@BindView(R.id.thumbs_up_text_view)
 	TextView thumbsUpPercentageTextView;
-	@Bind(R.id.video_duration_text_view)
+	@BindView(R.id.video_duration_text_view)
 	TextView videoDurationTextView;
-	@Bind(R.id.publish_date_text_view)
+	@BindView(R.id.publish_date_text_view)
 	TextView publishDateTextView;
-	@Bind(R.id.thumbnail_image_view)
+	@BindView(R.id.thumbnail_image_view)
 	ImageView thumbnailImageView;
-	@Bind(R.id.views_text_view)
+	@BindView(R.id.views_text_view)
 	TextView viewsTextView;
 
 	public GridViewHolder(View view, MainActivityListener listener) {

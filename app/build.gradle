@@ -100,6 +100,8 @@ dependencies {
     compile "com.github.moraisigor:slidingdrawer:${moraisigorSlidingDrawerVersion}"
     compile "com.github.bumptech.glide:glide:${glideVersion}"
     compile "com.jakewharton:butterknife:${butterKnifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
+
     compile "com.google.code.gson:gson:${gsonVersion}"
     compile "joda-time:joda-time:${jodaTimeVersion}"
     compile "com.afollestad.material-dialogs:core:${afolestadMaterialDialogsVersion}"
