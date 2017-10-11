@@ -52,9 +52,12 @@ android {
         }
     }
 
+    flavorDimensions "edition"
+
     productFlavors {
         // 100% Open-Source Edition
         oss {
+            dimension "edition"
             applicationId "free.rm.skytube.oss"
             versionName "2.3"
             // the digits of the *fractional part* shall not be larger than "9"
@@ -62,6 +65,7 @@ android {
         }
         // 99% Open-source edition:  uses the YouTube Player Jar [i.e. proprietary module - optional usage]
         extra {
+            dimension "edition"
             applicationId "free.rm.skytube.extra"
             versionName "2.3 Extra"
             // the digits of the *fractional part* shall not be larger than "9"
@@ -76,9 +80,7 @@ configurations {
 android.defaultConfig.project.archivesBaseName = "skytube"
 dependencies {
 
-    debugCompile project(path: ':library', configuration: "debug")
-    releaseCompile project(path: ':library', configuration: "release")
-
+    implementation project(':library')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
