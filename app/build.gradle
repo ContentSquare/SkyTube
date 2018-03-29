@@ -17,7 +17,6 @@ repositories {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
     lintOptions {
         abortOnError false
     }
@@ -72,6 +71,7 @@ android {
             resValue "string", "app_name", "SkyTube Extra"
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 configurations {
