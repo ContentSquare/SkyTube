@@ -71,7 +71,7 @@ android {
             resValue "string", "app_name", "SkyTube Extra"
         }
     }
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
 }
 
 configurations {
