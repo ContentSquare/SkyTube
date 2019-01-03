@@ -106,9 +106,9 @@ dependencies {
     implementation "joda-time:joda-time:${jodaTimeVersion}"
     implementation "com.afollestad.material-dialogs:core:${afolestadMaterialDialogsVersion}"
 
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-    implementation "com.android.support:design:${supportLibVersion}"
-    implementation "com.android.support:multidex:${googleSupportMultidexVersion}"
+    implementation "androidx.appcompat:appcompat:${androidXAppCompatVersion}"
+    implementation "com.google.android.material:material:${androidXMaterialDesignVersion}"
+    implementation "androidx.multidex:multidex:${androidXMultiDexVersion}"
     // this is as we have over 65536 lines of code...
     implementation("com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar") {
         transitive = true
