@@ -21,93 +21,94 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import androidx.multidex.MultiDexApplication;
 
 import com.contentsquare.android.ContentSquare;
-
 import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+
 import java.util.Arrays;
 import java.util.List;
 
 import free.rm.skytube.businessobjects.db.SubscriptionsDb;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * SkyTube application.
  */
-public class SkyTubeApp extends MultiDexApplication {
+public class SkyTubeApp extends Application {
 
-	/** SkyTube Application instance. */
-	private static SkyTubeApp skyTubeApp = null;
-	private static volatile SubscriptionsDb subscriptionsDb = null;
+    /** SkyTube Application instance. */
+    private static SkyTubeApp skyTubeApp = null;
+    private static volatile SubscriptionsDb subscriptionsDb = null;
 
-	public static final String KEY_SUBSCRIPTIONS_LAST_UPDATED = "SkyTubeApp.KEY_SUBSCRIPTIONS_LAST_UPDATED";
+    public static final String KEY_SUBSCRIPTIONS_LAST_UPDATED =
+            "SkyTubeApp.KEY_SUBSCRIPTIONS_LAST_UPDATED";
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		Fabric.with(this, new Crashlytics());
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Fabric.with(this, new Crashlytics());
         ContentSquare.startWithProjectId(getApplicationContext(), "skytubeapp");
-		skyTubeApp = this;
-	}
+        skyTubeApp = this;
+    }
 
 
-	/**
-	 * Returns a localised string.
-	 *
-	 * @param  stringResId	String resource ID (e.g. R.string.my_string)
-	 * @return Localised string, from the strings XML file.
-	 */
-	public static String getStr(int stringResId) {
-		return skyTubeApp.getString(stringResId);
-	}
+    /**
+     * Returns a localised string.
+     *
+     * @param stringResId String resource ID (e.g. R.string.my_string)
+     * @return Localised string, from the strings XML file.
+     */
+    public static String getStr(int stringResId) {
+        return skyTubeApp.getString(stringResId);
+    }
 
 
-	/**
-	 * Given a string array resource ID, it returns an array of strings.
-	 *
-	 * @param stringArrayResId String array resource ID (e.g. R.string.my_array_string)
-	 * @return Array of String.
-	 */
-	public static String[] getStringArray(int stringArrayResId) {
-		return skyTubeApp.getResources().getStringArray(stringArrayResId);
-	}
+    /**
+     * Given a string array resource ID, it returns an array of strings.
+     *
+     * @param stringArrayResId String array resource ID (e.g. R.string.my_array_string)
+     * @return Array of String.
+     */
+    public static String[] getStringArray(int stringArrayResId) {
+        return skyTubeApp.getResources().getStringArray(stringArrayResId);
+    }
 
 
-	/**
-	 * Given a string array resource ID, it returns an list of strings.
-	 *
-	 * @param stringArrayResId String array resource ID (e.g. R.string.my_array_string)
-	 * @return List of String.
-	 */
-	public static List<String> getStringArrayAsList(int stringArrayResId) {
-		return Arrays.asList(getStringArray(stringArrayResId));
-	}
+    /**
+     * Given a string array resource ID, it returns an list of strings.
+     *
+     * @param stringArrayResId String array resource ID (e.g. R.string.my_array_string)
+     * @return List of String.
+     */
+    public static List<String> getStringArrayAsList(int stringArrayResId) {
+        return Arrays.asList(getStringArray(stringArrayResId));
+    }
 
 
-	/**
-	 * Returns the App's {@link SharedPreferences}.
-	 *
-	 * @return {@link SharedPreferences}
-	 */
-	public static SharedPreferences getPreferenceManager() {
-		return PreferenceManager.getDefaultSharedPreferences(skyTubeApp);
-	}
+    /**
+     * Returns the App's {@link SharedPreferences}.
+     *
+     * @return {@link SharedPreferences}
+     */
+    public static SharedPreferences getPreferenceManager() {
+        return PreferenceManager.getDefaultSharedPreferences(skyTubeApp);
+    }
 
 
-	/**
-	 * Returns the dimension value that is specified in R.dimens.*.  This value is NOT converted into
-	 * pixels, but rather it is kept as it was originally written (e.g. dp).
-	 *
-	 * @return The dimension value.
-	 */
-	public static float getDimension(int dimensionId) {
-		return skyTubeApp.getResources().getDimension(dimensionId);
-	}
+    /**
+     * Returns the dimension value that is specified in R.dimens.*.  This value is NOT converted
+     * into
+     * pixels, but rather it is kept as it was originally written (e.g. dp).
+     *
+     * @return The dimension value.
+     */
+    public static float getDimension(int dimensionId) {
+        return skyTubeApp.getResources().getDimension(dimensionId);
+    }
 
 
-	public static Context getContext() {
-		return skyTubeApp.getBaseContext();
-	}
+    public static Context getContext() {
+        return skyTubeApp.getBaseContext();
+    }
 
 }
